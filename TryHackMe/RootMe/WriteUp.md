@@ -37,5 +37,5 @@
 ![gtfobins](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/RootMe/Root%20Me%20Pics/Task4%20-%20Gtfobins.PNG)
 
 - Após executá-lo conseguimos verificar que escalamos o privilégio e somos o root. 
- ![root] (https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/RootMe/Root%20Me%20Pics/Task4%20-%20Escalation%20Success.PNG)
+ ![root](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/RootMe/Root%20Me%20Pics/Task4%20-%20Escalation%20Success.PNG)
 - Então fui até o diretório do root 'cd /root/' e usei o comando ls, após isso utilizei o comando cat root.txt e consegui a última flag. 
