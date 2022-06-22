@@ -1,41 +1,28 @@
-# Root Me WriteUp
+# Simple CTF
  - Difficulty: Easy
 
-### Task 2 - Reconnaissance
-- Primeiro de tudo vamos executar o nmap para fazer um portscan e descobrir quais portas estão abertas juntamente com os serviços (e suas respectivas versões) que estão rodando em cada porta 'nmap -sV <ip maquina>' 
- ![nmap](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/RootMe/Root%20Me%20Pics/Task2-Nmap.PNG)
-- Após o nmap finalizar o scan, iremos poder responder as 3 primeiras perguntas: 
-  - How many ports are open?
-  - What version of Apache is running?
-  - What service is running on port 22?
+### Task 1
+- Pela primeira pergunta, já sei que terei que utilizar o nmap para realizar o port scan, então utilizarei nmap -sV -sC <ip_alvo> para realizar um scan nos serviços (e suas respectivas versões) e utilizar scripts padrões para verificar alguma vulnerabilidade
 
-- Após isso iremos usar o dirb para procurar os diretórios que o servico web possui, utilizando o comando 'gobuster dir --url http://<ip_maquina/ --wordlist <path to wordlist> -t 30', após o gobuster terminar de executar teremos a resposta para a última pergunta da Task 2
- ![gobuster](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/RootMe/Root%20Me%20Pics/Task2-GoBuster.PNG)
-  - What is the hidden directory?
+- Com o resultado do scan mostrado acima, conseguiremos responder as 2 primeiras perguntas.
+- Sabendo que há uma porta 80 com um serviço web, utilizei o gobuster (gobuster dir -w <caminho para a wordlist> -u http://<ip maquina>/ -t 30) para encontrar diretórios úteis
 
-### Task 3 - Getting a Shell
-- Entrei no diretório encontrado acima e tentei dar upload num arquivo .php porém recebi uma mensagem que PHP não é permitido. 
- ![nophp](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/RootMe/Root%20Me%20Pics/Task3-NoPHP.PNG)
-- Após isso, fui atrás de uma maneira de bypassar o file upload que restringe o .php, descobrindo que posso modificar a extensão do arquivo para .phtml (por exemplo) que ele ainda será lido como .php e assim irei conseguir o shell reverso. 
-- Então fui até o site revshells.com e gerei um código de reverse shell como podem ver a seguir:
- ![revshell](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/RootMe/Root%20Me%20Pics/Task3-ShellReverso.PNG)
+- Como podemos ver, um único diretório recebeu o status 301, então, entrei no <ip maquina>/simple/ para ver o que havia lá dentro. O resultado está logo abaixo.
 
-  - Observação: o ip que coloquei no site, foi o ip do turn0 e não o do eth0 (que você pode conferir usando o comando 'ifconfig')
-- Então dei upload no arquivo e utilizei o nc para escutar na porta 33456 'nc -lnvp 33456'. Fui no diretorio <ip maquina>/uploads/ e cliquei no arquivo .phtml e assim consegui o shell reverso 
- ![shellreve](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/RootMe/Root%20Me%20Pics/Task3-ReceivedShell.PNG)
+- Verifiquei se a versão do CMS Simple foi divulgada no site e sim, ela foi. 
 
-- E como podemos ver acima temos o nosso shell. Para encontrar a flag do usuário eu utilizei o comando 'find / -name user.txt'
-![user.txt](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/RootMe/Root%20Me%20Pics/Task3-UserFlag.PNG)
-- Após isso dei um 'cat <caminho flag>' e pronto, conseguimos responder a pergunda da Task 3
+- Então fazendo uma busca por CMS Simple 2.2.8 CVE, podemos responder as 2 próximas perguntas.
 
-### Task 4 - Privilege Escalation
+- No searchsploit procurei pelo Simple 2.2.8, e encontrei o código para o SQLi. Então, utilizei o locate para o nome do arquivo python (46635.py) e utilizei a seguinte linha de comando: python <caminho para o arquivo .py> -u <url>/simple --crack -w <caminho para wordlist> e o resultado será mostrado a seguir:
 
-- Agora temos que escalar o privilégio para conseguir a flag do root. A primeira pergunta da task 4 nos da uma dica para onde devemos ir (Search for files with SUID permission, which file is weird?). Então utilizei o comando 'find / -user root -perm /4000'. Após isso teremos encontrado nosso arquivo estranho. 
- ![weird](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/RootMe/Root%20Me%20Pics/Task4%20-%20Weird%20File.PNG)
+- E com isso conseguiremos responder as perguntas 5 e 6.
 
-- Usando a dica da 2ª pergunta, fui até o https://gtfobins.github.io/ e procurei por Python. Como na questão anterior havia falado sobre SUID encontrei o seguinte comando: 
-![gtfobins](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/RootMe/Root%20Me%20Pics/Task4%20-%20Gtfobins.PNG)
+- Após isso, iremos conseguir nos conectar via ssh utilizando o usuário mitch. Então utilizamos o comando ssh mitch@<ip maquina> -p 2222 (como foi mostrado no portscan) como mostrado logo abaixo:
 
-- Após executá-lo conseguimos verificar que escalamos o privilégio e somos o root. 
- ![root](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/RootMe/Root%20Me%20Pics/Task4%20-%20Escalation%20Success.PNG)
-- Então fui até o diretório do root 'cd /root/' e usei o comando ls, após isso utilizei o comando cat root.txt e consegui a última flag. 
+- Utilizei o comando ls e encontrei a flag do usuário, respondendo assim a pergunta 7
+- Para responder a pergunta número 8, basta utilizar o comando cd /home e em seguida utilizar o comando ls. 
+- Utilizando o comando sudo -l, percebi que o usuário mitch pode utilizar o /usr/bin/vim, e pela pergunta sabemos que será por esse meio que escalaremos o privilégio para root. Então fui até o GTFOBins encontrei o seguinte comando:
+
+- Após rodar o comando, utilizei o sudo su - e pronto estamos como root. Utilizei o comando ls e está lá a flag do root.
+
+
