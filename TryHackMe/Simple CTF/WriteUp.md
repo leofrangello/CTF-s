@@ -34,7 +34,7 @@
 - Utilizando o comando sudo -l, percebi que o usuário mitch pode utilizar o /usr/bin/vim, e pela pergunta sabemos que será por esse meio que escalaremos o privilégio para root. Então fui até o GTFOBins encontrei o seguinte comando:
 ![gtfobins](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/Simple%20CTF/SimpleCTF%20Pics/Task1%20-%20GTFobins.PNG)
 
-- Após rodar o comando, utilizei o sudo su - e pronto estamos como root. Utilizei o comando ls e está lá a flag do root.
+- Após rodar o comando, utilizei o sudo su - e pronto estamos como root. Utilizei o comando ls e pronto, temos a flag do root.
 ![root flag](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/Simple%20CTF/SimpleCTF%20Pics/Task1%20-%20Flag%20Root.PNG)
  
 
