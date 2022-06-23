@@ -8,7 +8,7 @@
 
 - Com o resultado do scan mostrado acima, conseguiremos responder as 2 primeiras perguntas.
 - Sabendo que há uma porta 80 com um serviço web, utilizei o gobuster (gobuster dir -w <caminho para a wordlist> -u http://<ip maquina>/ -t 30) para encontrar diretórios úteis
- ![gobuster](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/Simple%20CTF/SimpleCTF%20Pics/Task1%20-%20GoBuster.PNG](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/Easy/Simple%20CTF/SimpleCTF%20Pics/Task1%20-%20GoBuster.PNG)
+ ![gobuster](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/Easy/Simple%20CTF/SimpleCTF%20Pics/Task1%20-%20GoBuster.PNG)
 
 - Como podemos ver, um único diretório recebeu o status 301, então, entrei no <ip maquina>/simple/ para ver o que havia lá dentro. O resultado está logo abaixo.
 ![simple](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/Easy/Simple%20CTF/SimpleCTF%20Pics/Task1%20-%20Simple.PNG)
