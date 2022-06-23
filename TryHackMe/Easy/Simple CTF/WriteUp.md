@@ -3,7 +3,7 @@
 
  - Observação: Irá aparecer terminais diferentes, pois utilizei o cmd do windows, da minha vm e da vm disponibilizada pelo tryhackme
 ### Task 1
-- Pela primeira pergunta, já sei que terei que utilizar o nmap para realizar o port scan, então utilizarei nmap -sV -sC <ip_alvo> para realizar um scan nos serviços (e suas respectivas versões) e utilizar scripts padrões para verificar alguma vulnerabilidade
+- Pela primeira pergunta, já sei que terei que utilizar o nmap para realizar o port scan, então utilizarei nmap -sV -sC <ip_alvo> para realizar um scan nos serviços (e suas respectivas versões)
 ![nmap](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/Easy/Simple%20CTF/SimpleCTF%20Pics/Task1%20-%20Nmap.PNG)
 
 - Com o resultado do scan mostrado acima, conseguiremos responder as 2 primeiras perguntas.
