@@ -9,7 +9,7 @@
 ![](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/Easy/Lazy%20Admin/LazyAdmin%20Pics/Task1%20-%20GoBuster.PNG) 
 
 - Achamos o diretório /content, porém não havia mais nada dentro dele, então usei novamente o gobuster mas dessa vez no /content para descobrir novos diretórios, o resultado vocês podem ver a seguir: 
- ![]https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/Easy/Lazy%20Admin/LazyAdmin%20Pics/Task1%20-%20GoBuster2.PNG
+ ![](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/Easy/Lazy%20Admin/LazyAdmin%20Pics/Task1%20-%20GoBuster2.PNG)
 
 
 - No /content/as há uma página de login, no qual ainda não temos as credencias para conseguir logar, então vamos procurar em outro diretório.
