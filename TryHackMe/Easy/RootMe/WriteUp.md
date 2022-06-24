@@ -9,7 +9,7 @@
   - What version of Apache is running?
   - What service is running on port 22?
 
-- Após isso iremos usar o dirb para procurar os diretórios que o servico web possui, utilizando o comando 'gobuster dir --url http://<ip_maquina/ --wordlist <path to wordlist> -t 30', após o gobuster terminar de executar teremos a resposta para a última pergunta da Task 2
+- Após isso iremos usar o dirb para procurar os diretórios que o servico web possui, utilizando o comando 'gobuster dir --url http://<ip_maquina>/ -w [wordlist]  , após o gobuster terminar de executar teremos a resposta para a última pergunta da Task 2
  ![gobuster](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/Easy/RootMe/Root%20Me%20Pics/Task2-GoBuster.PNG)
   - What is the hidden directory?
 
