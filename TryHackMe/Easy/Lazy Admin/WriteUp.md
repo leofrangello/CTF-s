@@ -5,7 +5,8 @@
 
 - Pra começar utilizei o comando nmap -sV -sC <ip alvo> para realizar um port scan, mostrando os serviços e suas respectivas versões em cada porta, assim como testar os scripts default do nmap em cada uma das portas. O resultado do comando vocês podem conferir abaixo:
 ![](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/Easy/Lazy%20Admin/LazyAdmin%20Pics/Task1%20-%20Nmap.PNG)
-- Após isso, utilizei também o gobuster para descobrir diretórios que sejam interessantes (pois há uma porta 80 aberta com serviço http). Então o comando utilizado foi gobuster dir -u http://<ip alvo>/ -w <caminho para a wordlist> -t 30. O diretórios encontrados vocês podem ver logo abaixo:
+- Após isso, utilizei também o gobuster para descobrir diretórios que sejam interessantes (pois há uma porta 80 aberta com serviço http). Então o comando utilizado foi gobuster dir -u http://[ip alvo]/ -w [caminho para a wordlist] -t 30. O diretórios encontrados vocês podem ver logo abaixo:
+ 
 ![](https://github.com/leofrangello/CTF-s/blob/main/TryHackMe/Easy/Lazy%20Admin/LazyAdmin%20Pics/Task1%20-%20GoBuster.PNG) 
 
 - Achamos o diretório /content, porém não havia mais nada dentro dele, então usei novamente o gobuster mas dessa vez no /content para descobrir novos diretórios, o resultado vocês podem ver a seguir: 
